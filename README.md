@@ -34,4 +34,4 @@ Mentoría personalizada para desarrolladores en crecimiento, seniors y Tech Lead
 
 **80% OFF** - USD $20 / ARS $30.000 por sesión
 
-👉 **[Reservar sesión en mentoria.albo.ar](https://mentoria.albo.ar)**
+👉 **[Reservar sesión en mentor.dev.ar](https://mentor.dev.ar)**
