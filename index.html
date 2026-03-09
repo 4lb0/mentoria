@@ -586,6 +586,51 @@
       .payment-buttons .btn { width: 100%; padding: 14px 20px; font-size: 0.9rem; }
 
       /* === CTA FINAL === */
+      /* === FAQ === */
+      .faq { padding: clamp(64px,8vw,96px) 0; position: relative; z-index: 1; }
+      .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+      .faq-item {
+        background: linear-gradient(145deg, rgba(255,255,255,0.065) 0%, rgba(255,255,255,0.018) 100%);
+        border: 1px solid var(--border); border-radius: var(--radius-card); overflow: hidden;
+        transition: border-color var(--t-std) var(--ease-expo);
+      }
+      .faq-item:hover { border-color: var(--border-hover); }
+      .faq-item.open { border-color: var(--border-accent); }
+      .faq-question {
+        width: 100%; background: none; border: none; cursor: pointer;
+        display: flex; justify-content: space-between; align-items: center; gap: 16px;
+        padding: 20px 24px; text-align: left;
+        color: var(--fg); font-size: 0.95rem; font-weight: 500; font-family: inherit;
+        transition: color var(--t-fast);
+      }
+      .faq-question:hover { color: #fff; }
+      .faq-icon {
+        flex-shrink: 0; width: 20px; height: 20px;
+        border: 1px solid var(--border-hover); border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        position: relative; transition: all var(--t-std) var(--ease-expo);
+      }
+      .faq-icon::before, .faq-icon::after {
+        content: ''; position: absolute;
+        background: var(--fg-muted); border-radius: 2px;
+        transition: all var(--t-std) var(--ease-expo);
+      }
+      .faq-icon::before { width: 8px; height: 1.5px; }
+      .faq-icon::after  { width: 1.5px; height: 8px; }
+      .faq-item.open .faq-icon { border-color: var(--border-accent); background: rgba(94,106,210,0.08); }
+      .faq-item.open .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+      .faq-item.open .faq-icon::before { background: var(--accent); }
+      .faq-answer {
+        max-height: 0; overflow: hidden;
+        transition: max-height var(--t-std) var(--ease-expo), padding var(--t-std) var(--ease-expo);
+      }
+      .faq-item.open .faq-answer { max-height: 200px; }
+      .faq-answer p {
+        padding: 0 24px 20px; color: var(--fg-muted);
+        font-size: 0.9rem; line-height: 1.76; border-top: 1px solid var(--border);
+        padding-top: 16px;
+      }
+
       .cta-final { padding: clamp(64px,8vw,96px) 0; position: relative; z-index: 1; }
       .cta-box {
         background: linear-gradient(135deg, rgba(94,106,210,0.14) 0%, rgba(94,106,210,0.06) 55%, rgba(255,255,255,0.025) 100%);
@@ -678,8 +723,9 @@
           <a href="https://mentor.dev.ar" class="logo">mentor<span>.dev.ar</span></a>
           <nav class="header-nav" aria-label="Navegación principal">
             <a href="#features">Para quién</a>
-            <a href="#about">Sobre Albo</a>
             <a href="#topics">Temas</a>
+            <a href="#faq">FAQ</a>
+            <a href="#about">Sobre Albo</a>
           </nav>
           <div class="header-actions">
             <a href="#pricing" class="btn-header-cta"
@@ -699,8 +745,9 @@
         <div class="mobile-menu-inner">
           <nav class="mobile-menu-links" aria-label="Menú móvil">
             <a href="#features" onclick="closeMobileMenu()">Para quién</a>
-            <a href="#about"    onclick="closeMobileMenu()">Sobre Albo</a>
             <a href="#topics"   onclick="closeMobileMenu()">Temas</a>
+            <a href="#faq"      onclick="closeMobileMenu()">FAQ</a>
+            <a href="#about"    onclick="closeMobileMenu()">Sobre Albo</a>
             <a href="#pricing"  onclick="closeMobileMenu()">Precios</a>
           </nav>
           <div class="mobile-menu-cta">
@@ -778,13 +825,17 @@
           <div class="includes-main">
             <div class="include-item animate-in delay-1">
               <span class="include-check" aria-hidden="true">✓</span>
-              <span>Sesión 1:1 de 1 hora por videollamada</span>
+              <span>Sesión 1:1 de 1 hora por Google Meet</span>
             </div>
             <div class="include-item animate-in delay-2">
               <span class="include-check" aria-hidden="true">✓</span>
-              <span>Follow-up post sesión</span>
+              <span>Grabación de la sesión para volver a verla</span>
             </div>
             <div class="include-item animate-in delay-3">
+              <span class="include-check" aria-hidden="true">✓</span>
+              <span>Follow-up post sesión</span>
+            </div>
+            <div class="include-item animate-in delay-4">
               <span class="include-check" aria-hidden="true">✓</span>
               <span>Materiales y recursos personalizados</span>
             </div>
@@ -795,6 +846,103 @@
               <div class="async-item"><span class="async-item-icon" aria-hidden="true">🎮</span><span>Por Discord</span></div>
               <div class="async-item"><span class="async-item-icon" aria-hidden="true">💼</span><span>Por Slack</span></div>
               <div class="async-item"><span class="async-item-icon" aria-hidden="true">📧</span><span>Por mail</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <section class="pricing-section" id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label animate-in">Precio</span>
+          <h2 class="section-title animate-in delay-1">Reservá tu sesión</h2>
+          <p class="section-subtitle animate-in delay-2">Últimas 5 sesiones a precio de lanzamiento</p>
+        </div>
+        <div class="pricing-hero animate-in delay-2">
+          <span class="offer-badge">⚡ 70% OFF — Últimas 5 sesiones</span>
+          <div class="price-container">
+            <p class="price-original">$135.000 / USD 100</p>
+            <p class="price-current">$ 40.000 <small>/ sesión</small></p>
+            <p class="price-usd">o USD 30</p>
+            <p class="price-note">Sesión de 1 hora + 1 mes de consultas asincrónicas</p>
+          </div>
+          <div class="payment-buttons">
+            <a href="https://pay.galio.app/payment/69ab3c644fe7e5352dd99db0?proof=76edf7fe-62c2-49f7-bea5-880c9497df4e"
+               target="_blank" class="btn btn-transfer"
+               onclick="posthog.capture('cta_click', { method: 'galiopay', location: 'pricing' })"
+               aria-label="Pagar con transferencia">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M8 0 0 5v3h1.5v5H0v3h16v-3h-1.5V8H16V5L8 0Zm3.5 8h-2v5h2V8Zm-5 0h-2v5h2V8Z" clip-rule="evenodd"/>
+              </svg>
+              Pagar con transferencia
+            </a>
+            <button class="btn btn-paypal" onclick="openPayPalModal()" aria-label="Pagar con PayPal">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797H9.05a.792.792 0 0 0-.782.671l-.006.041-.897 5.689-.006.032a.645.645 0 0 1-.638.573h-.645z"/>
+              </svg>
+              Pagar con PayPal
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label animate-in">FAQ</span>
+          <h2 class="section-title animate-in delay-1">Preguntas frecuentes</h2>
+          <p class="section-subtitle animate-in delay-2">Todo lo que necesitás saber antes de reservar</p>
+        </div>
+        <div class="faq-list animate-in delay-1">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              ¿Qué pasa si no puedo asistir en el horario acordado?
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer">
+              <p>Sin problema. Coordinamos un nuevo horario por WhatsApp, Discord o mail. Lo único que pido es avisarme con al menos 24 horas de anticipación para poder reorganizar la agenda.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              ¿Hay política de devolución?
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer">
+              <p>Si al terminar la sesión sentís que no valió la pena, te devuelvo el 100% del dinero. Sin preguntas.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              ¿Por qué plataforma es la sesión?
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer">
+              <p>Las sesiones son por Google Meet y quedan grabadas, así podés volver a verla cuando quieras. El link lo coordinamos por WhatsApp o mail una vez confirmado el pago.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              ¿Qué tan rápido respondés en el follow-up de 30 días?
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer">
+              <p>Suelo responder el mismo día. Si es una consulta que requiere más tiempo para pensar bien la respuesta, te aviso y la tenés en 24 horas.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              ¿Las sesiones son solo en español?
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer">
+              <p>No, también puedo hacer las sesiones en inglés si lo preferís. Avisame cuando coordinemos el horario.</p>
             </div>
           </div>
         </div>
@@ -923,44 +1071,6 @@
       </div>
     </section>
 
-    <div class="section-divider" aria-hidden="true"></div>
-
-    <section class="pricing-section" id="pricing">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label animate-in">Precio</span>
-          <h2 class="section-title animate-in delay-1">Reservá tu sesión</h2>
-          <p class="section-subtitle animate-in delay-2">Últimas 10 sesiones a precio de lanzamiento</p>
-        </div>
-        <div class="pricing-hero animate-in delay-2">
-          <span class="offer-badge">⚡ 70% OFF — Últimas 10 sesiones</span>
-          <div class="price-container">
-            <p class="price-original">$135.000 / USD 100</p>
-            <p class="price-current">$ 40.000 <small>/ sesión</small></p>
-            <p class="price-usd">o USD 30</p>
-            <p class="price-note">Sesión de 1 hora + 1 mes de consultas asincrónicas</p>
-          </div>
-          <div class="payment-buttons">
-            <a href="https://pay.galio.app/payment/69ab3c644fe7e5352dd99db0?proof=76edf7fe-62c2-49f7-bea5-880c9497df4e"
-               target="_blank" class="btn btn-transfer"
-               onclick="posthog.capture('cta_click', { method: 'galiopay', location: 'pricing' })"
-               aria-label="Pagar con transferencia">
-              <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M8 0 0 5v3h1.5v5H0v3h16v-3h-1.5V8H16V5L8 0Zm3.5 8h-2v5h2V8Zm-5 0h-2v5h2V8Z" clip-rule="evenodd"/>
-              </svg>
-              Pagar con transferencia
-            </a>
-            <button class="btn btn-paypal" onclick="openPayPalModal()" aria-label="Pagar con PayPal">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797H9.05a.792.792 0 0 0-.782.671l-.006.041-.897 5.689-.006.032a.645.645 0 0 1-.638.573h-.645z"/>
-              </svg>
-              Pagar con PayPal
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="cta-final">
       <div class="container">
         <div class="cta-box animate-in">
@@ -1071,6 +1181,22 @@
           const r = card.getBoundingClientRect();
           card.style.setProperty("--mx", ((e.clientX - r.left) / r.width * 100) + "%");
           card.style.setProperty("--my", ((e.clientY - r.top) / r.height * 100) + "%");
+        });
+      });
+
+      // FAQ accordion
+      document.querySelectorAll(".faq-question").forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          const item = this.closest(".faq-item");
+          const isOpen = item.classList.contains("open");
+          document.querySelectorAll(".faq-item.open").forEach(function(el) {
+            el.classList.remove("open");
+            el.querySelector(".faq-question").setAttribute("aria-expanded", "false");
+          });
+          if (!isOpen) {
+            item.classList.add("open");
+            this.setAttribute("aria-expanded", "true");
+          }
         });
       });
 
